@@ -84,6 +84,25 @@ function RenderDish({ dish }) {
 }
 export default class DishDetail extends Component {
   render() {
+    if (this.props.isLoading) {
+      return(
+          <div className="container">
+              <div className="row">
+                  <Loading />
+              </div>
+          </div>
+      );
+  }
+  else if (this.props.errMess) {
+      return(
+          <div className="container">
+              <div className="row">
+                  <h4>{this.props.errMess}</h4>
+              </div>
+          </div>
+      );
+  }
+  else if (this.props.dish != null) {
     return (
       <>
         <div className="container">
@@ -119,6 +138,7 @@ export default class DishDetail extends Component {
       </>
     );
   }
+  }
 }
 
 class CommentForm extends Component {
@@ -150,25 +170,7 @@ class CommentForm extends Component {
     const required = (val) => val && val.length;
     const maxLength = (len) => (val) => !val || val.length <= len;
     const minLength = (len) => (val) => val && val.length >= len;
-    //   if (this.props.isLoading) {
-    //     return(
-    //         <div className="container">
-    //             <div className="row">
-    //                 <Loading />
-    //             </div>
-    //         </div>
-    //     );
-    // }
-    // else if (this.props.errMess) {
-    //     return(
-    //         <div className="container">
-    //             <div className="row">
-    //                 <h4>{this.props.errMess}</h4>
-    //             </div>
-    //         </div>
-    //     );
-    // }
-    // else if (this.props.dish != null) {
+
     return (
       <>
         <Button outline onClick={this.toggleModal}>
@@ -251,6 +253,5 @@ class CommentForm extends Component {
         </Modal>
       </>
     );
-    // }
-  }
+    }
 }

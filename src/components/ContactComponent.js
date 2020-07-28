@@ -1,10 +1,11 @@
 /* eslint-disable no-unused-vars */
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import {
   Button,
   Label,
   Col,
   Row,
+  Alert,
 } from "reactstrap";
 import { Control, LocalForm, Errors } from "react-redux-form";
 
@@ -99,6 +100,8 @@ class Contact extends Component {
             <h3>Send us your Feedback</h3>
           </div>
           <div className="col-12 col-md-9">
+        <AlertBox message={this.props.success} isTrue={this.props.isTrue} color={this.props.color}/>
+
             <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
             <Row className="form-group">
                                 <Label htmlFor="firstname" md={2}>First Name</Label>
@@ -282,9 +285,28 @@ class Contact extends Component {
             </div>
           </div>
         </div>
+        
       </div>
     );
   }
+}
+
+function AlertBox({message,isTrue,color}){
+  const [visible, setVisible] = useState(true);
+
+  const onDismiss = () => setVisible(false);
+  
+  if (isTrue === true) {
+    return (
+      <Alert color={color} isOpen={visible} toggle={onDismiss}>
+            {message}
+    </Alert>     
+    );
+  }
+  else{
+    return <div></div>;
+  }
+
 }
 
 export default Contact;

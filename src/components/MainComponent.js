@@ -22,7 +22,8 @@ const mapStateToProps = state => {
     dishes: state.dishes,
     comments: state.comments,
     promotions: state.promotions,
-    leaders: state.leaders
+    leaders: state.leaders,
+    feedBack : state.feedBack
   }
 }
 const mapDispatchToProps = dispatch => ({
@@ -49,6 +50,7 @@ class Main extends Component {
     this.props.fetchComments();
     this.props.fetchPromos();
     this.props.fetchLeaders();
+    // console.log(this.props.params.dishId);
   }
   
   render() {
@@ -78,6 +80,7 @@ class Main extends Component {
       />
       );
     };
+    
     return (
       <React.Fragment>
         <Header />
@@ -89,7 +92,10 @@ class Main extends Component {
                   <Route exact path='/menu' component={() => <Menu dishes={this.props.dishes} />} />
                   <Route path='/menu/:dishId' component={DishWithId} />
                   <Route exact path='/contactus' component={() => <Contact resetFeedbackForm={this.props.resetFeedbackForm} 
-                  postFeedback={this.props.postFeedback}/>} />
+                  postFeedback={this.props.postFeedback} 
+                  success={this.props.feedBack.feedback.message} 
+                  isTrue={this.props.feedBack.feedback.isTrue}
+                  color={this.props.feedBack.feedback.class}/>} />
                   <Redirect to="/home" />
               </Switch>
             </CSSTransition>

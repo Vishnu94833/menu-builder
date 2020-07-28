@@ -5,8 +5,9 @@ import { Promotions } from './promotions';
 import { Leaders } from './leaders';
 
 import thunk from 'redux-thunk';
-// import logger from 'redux-logger';
-// import { composeWithDevTools } from "redux-devtools-extension";
+import { Feedback } from './feedback';
+import logger from 'redux-logger';
+import { composeWithDevTools } from "redux-devtools-extension";
 
 export const ConfigureStore = () => {
     const store = createStore(
@@ -14,12 +15,13 @@ export const ConfigureStore = () => {
             dishes: Dishes,
             comments: Comments,
             promotions: Promotions,
-            leaders: Leaders
+            leaders: Leaders,
+            feedBack:Feedback
         }),
-        // composeWithDevTools(
-            applyMiddleware(thunk)
+        composeWithDevTools(
+            applyMiddleware(thunk,logger)
             // other store enhancers if any
-        //   )
+          )
         
     );
 
