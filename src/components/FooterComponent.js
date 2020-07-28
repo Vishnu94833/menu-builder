@@ -10,26 +10,11 @@ function Footer(props) {
   ];
   return (
     <div className="footer">
-      {/* <div className="container">
-            <div className="row">             
-                <div className="col-12 offset-1 col-sm-2">
-                    <h5>Links</h5>
-                    <ul className="list-unstyled d-flex ">
-                        <Links footerLinks={footerLinks}/>
-                    </ul>
-                </div>
-            </div>
-            <div className="row justify-content-center">             
-                <div className="col-auto">
-                    <p>© Copyright 2018 Lorem ipsum</p>
-                </div>
-            </div>
-        </div> */}
       <footer class="page-footer font-small blue pt-4">
         <div class="container text-center text-md-left">
           <div class="row">
           <div class="col-md-3 mb-md-0 mb-3">
-              <img src="assets/images/logo.png" alt="Lorem ipsum"/>
+              <img src="assets/images/logo-1.png" alt="Lorem ipsum"/>
             </div>
             <div class="col-md-3 mb-md-0 mb-3">
               <h5 class="text-uppercase">Links</h5>
@@ -51,7 +36,6 @@ function Footer(props) {
             </div>
           </div>
         </div>
-        {/* </div> */}
         <div class="footer-copyright text-center py-3">
           © 2020 Copyright Lorem ipsum
         </div>
