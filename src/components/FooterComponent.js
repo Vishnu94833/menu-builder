@@ -53,8 +53,7 @@ function Footer(props) {
         </div>
         {/* </div> */}
         <div class="footer-copyright text-center py-3">
-          © 2020 Copyright:
-          <a href="/">Lorem ipsum</a>
+          © 2020 Copyright Lorem ipsum
         </div>
       </footer>
     </div>
