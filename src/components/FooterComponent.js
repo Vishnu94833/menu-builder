@@ -46,7 +46,7 @@ function Footer(props) {
 function Links({ footerLinks }) {
   return footerLinks.map((e) => {
     return (
-      <li key={e.label}>
+      <li key={e.label} className="footer-links">
         <Link to={e.href}>{e.label}</Link>
       </li>
     );
