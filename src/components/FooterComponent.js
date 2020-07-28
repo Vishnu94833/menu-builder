@@ -1,51 +1,72 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 
 function Footer(props) {
-    return(
+  const footerLinks = [
+    { href: "/home", label: "Home" },
+    { href: "/aboutus", label: "About Us" },
+    { href: "/menu", label: "Menu" },
+    { href: "/contactus", label: "Contact Us" },
+  ];
+  return (
     <div className="footer">
-        <div className="container">
-            <div className="row justify-content-center">             
-                <div className="col-4 offset-1 col-sm-2">
+      {/* <div className="container">
+            <div className="row">             
+                <div className="col-12 offset-1 col-sm-2">
                     <h5>Links</h5>
-                    <ul className="list-unstyled">
-                    <li><Link to='/home'>Home</Link></li>
-                        <li><Link to='/aboutus'>About Us</Link></li>
-                        <li><Link to='/menu'>Menu</Link></li>
-                        <li><Link to='/contactus'>Contact Us</Link></li>
+                    <ul className="list-unstyled d-flex ">
+                        <Links footerLinks={footerLinks}/>
                     </ul>
-                </div>
-                <div className="col-7 col-sm-5">
-                    <h5>Our Address</h5>
-                    <address>
-		              121, Clear Water Bay Road<br />
-		              Clear Water Bay, Kowloon<br />
-		              HONG KONG<br />
-		              <i className="fa fa-phone fa-lg"></i>: +852 1234 5678<br />
-		              <i className="fa fa-fax fa-lg"></i>: +852 8765 4321<br />
-		              <i className="fa fa-envelope fa-lg"></i>: <a href="mailto:confusion@food.net">
-                         confusion@food.net</a>
-                    </address>
-                </div>
-                <div className="col-12 col-sm-4 align-self-center">
-                    <div className="text-center">
-                        <a className="btn btn-social-icon btn-google" href="http://google.com/+"><i className="fa fa-google-plus"></i></a>
-                        <a className="btn btn-social-icon btn-facebook" href="http://www.facebook.com/profile.php?id="><i className="fa fa-facebook"></i></a>
-                        <a className="btn btn-social-icon btn-linkedin" href="http://www.linkedin.com/in/"><i className="fa fa-linkedin"></i></a>
-                        <a className="btn btn-social-icon btn-twitter" href="http://twitter.com/"><i className="fa fa-twitter"></i></a>
-                        <a className="btn btn-social-icon btn-google" href="http://youtube.com/"><i className="fa fa-youtube"></i></a>
-                        <a className="btn btn-social-icon" href="mailto:"><i className="fa fa-envelope-o"></i></a>
-                    </div>
                 </div>
             </div>
             <div className="row justify-content-center">             
                 <div className="col-auto">
-                    <p>© Copyright 2018 Ristorante Con Fusion</p>
+                    <p>© Copyright 2018 Lorem ipsum</p>
                 </div>
             </div>
-        </div>
-    </div>
-    )
-}
+        </div> */}
+      <footer class="page-footer font-small blue pt-4">
+        <div class="container text-center text-md-left">
+          <div class="row">
+          <div class="col-md-3 mb-md-0 mb-3">
+              <img src="assets/images/logo.png" alt="Lorem ipsum"/>
+            </div>
+            <div class="col-md-3 mb-md-0 mb-3">
+              <h5 class="text-uppercase">Links</h5>
+              <ul class="list-unstyled">
+                <Links footerLinks={footerLinks} />
+              </ul>
+            </div>
 
+            <div class="col-md-6 mt-md-0 mt-3">
+              <h5 class="text-uppercase">Lorem ipsum</h5>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipiscing elit, urna
+                consequat felis vehicula class ultricies mollis dictumst, aenean
+                non a in donec nulla. Phasellus ante pellentesque erat cum risus
+                consequat imperdiet aliquam, integer placerat et turpis mi eros
+                nec lobortis taciti, vehicula nisl litora tellus ligula
+                porttitor metus.
+              </p>
+            </div>
+          </div>
+        </div>
+        {/* </div> */}
+        <div class="footer-copyright text-center py-3">
+          © 2020 Copyright:
+          <a href="/">Lorem ipsum</a>
+        </div>
+      </footer>
+    </div>
+  );
+}
+function Links({ footerLinks }) {
+  return footerLinks.map((e) => {
+    return (
+      <li key={e.label}>
+        <Link to={e.href}>{e.label}</Link>
+      </li>
+    );
+  });
+}
 export default Footer;

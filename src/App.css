@@ -92,6 +92,11 @@ address{
   transition: all 300ms ease-out;
 }
 
+.footer-links{
+  padding: 0 15px;
+  display: inline-block;
+}
+
 /* Loaders CSS */
 .loader {
   margin: 100px auto;

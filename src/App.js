@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Router } from 'react-router-dom';
+import { HashRouter } from 'react-router-dom';
 import "./App.css";
 import { Provider } from 'react-redux';
 import { ConfigureStore } from './redux/configureStore';
@@ -14,11 +14,11 @@ class App extends Component{
   render(){
   return (
     <Provider store={store}>
-    <Router history={history}>
+    <HashRouter history={history}>
       <div className="">
         <Main />
       </div>
-    </Router>
+    </HashRouter>
   </Provider>
   );
   }
