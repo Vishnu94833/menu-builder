@@ -56,8 +56,9 @@ const limitCacheSize = (name, size) => {
 //fetch event
 //intercepting requests
 this.addEventListener('fetch', evt => {
+    debugger
   //check to avoid this if the request it to google database api
-  if (evt.request.url.indexOf('vishnukuppan1796-dev-ed.my.salesforce.com') === -1) {
+//   if (evt.request.url.indexOf('vishnukuppan1796-dev-ed.my.salesforce.com') === -1) {
     evt.respondWith(
       caches.match(evt.request).then(cacheRes => {
         return cacheRes || fetch(evt.request).then(fetchRes => {
@@ -74,7 +75,7 @@ this.addEventListener('fetch', evt => {
 
       })
     );
-  }
+//   }
 
 
 //   console.log('fetch event', evt);
