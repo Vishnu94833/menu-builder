@@ -2,7 +2,8 @@ const staticCacheName = 'site-static-v8';
 const dynamicCacheName = 'site-dynamic-v8';
 const assets = [
   '/',
-  'index.html'
+  'index.html',
+  'https://vishnukuppan1796-dev-ed.my.salesforce.com'
 ]
 
 this.addEventListener('install', (event) => {
