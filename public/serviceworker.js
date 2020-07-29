@@ -62,10 +62,21 @@ const limitCacheSize = (name, size) => {
 this.addEventListener('fetch', evt => {
   //check to avoid this if the request it to google database api
   if (evt.request.url.indexOf('vishnukuppan1796-dev-ed.my.salesforce.com') === -1) {
+    fetch("https://vishnukuppan1796-dev-ed.my.salesforce.com/services/data/v49.0/query/?q=SELECT+Id,id__c,Name__c,image__c,category__c,label__c,price__c,featured__c,description__c+from+dishes__c", {
+        headers: {
+          Authorization: "Bearer 00D2w000001NWR3!ARYAQIK0LuzHrz96eusoZAJ4HkY5krtWAFujGiVI1adH6vefJZljAkJK9eXNCwD_DNpCtOaWkyQlg4vXJdtj6ZlTO9rxoqB3"
+        }
+      })
+      .then(res=>{
+          console.log("FETCH RESPONSE",res);
+      })
+      .catch(err=>{
+          console.log(err);
+      })
     evt.respondWith(
       caches.match(evt.request).then(cacheRes => {
         return cacheRes || fetch(evt.request).then(fetchRes => {
-            console.log("FETCH RESPONSE",evt.request);
+            // console.log("FETCH RESPONSE",evt.request);
           return caches.open(dynamicCacheName).then(cache => {
             cache.put(evt.request.url, fetchRes.clone());
             limitCacheSize(dynamicCacheName, 15)
