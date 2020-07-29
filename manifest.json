@@ -1,6 +1,6 @@
 {
   "short_name": "Menu Builder",
-  "name": "Menu Builder App",
+  "name": "Menu Builder",
   "icons": [
     {
       "src": "icon-72x72.png",
@@ -51,7 +51,7 @@
       "purpose": "maskable"
     }
   ],
-  "start_url": "/menu-builder",
+  "start_url": "/",
   "display": "standalone",
   "theme_color": "#000000",
   "background_color": "#ffffff"
