@@ -28,7 +28,7 @@ this.addEventListener('activate', (event) => {
 //   console.log('service worker has been activated', event)
   event.waitUntil(
     caches.keys().then((keys) => {
-      console.log(keys)  //keys have the names of 2 different caches (staticCacheName)..
+    //   console.log(keys)  //keys have the names of 2 different caches (staticCacheName)..
       return Promise.all(keys // to delete the old version of caches.  2nd promise resolved
         .filter(keys => keys !== staticCacheName && keys !== dynamicCacheName)
         .map(keys => caches.delete(keys))  //this will return an array of promises.  1st promise resolved..
@@ -61,6 +61,7 @@ this.addEventListener('fetch', evt => {
   if (evt.request.url.indexOf('vishnukuppan1796-dev-ed.my.salesforce.com') === -1) {
     evt.respondWith(
       caches.match(evt.request).then(cacheRes => {
+        console.log("FETCH RESPONSE cacheRes",cacheRes);
         return cacheRes || fetch(evt.request, {headers: {
             Authorization: "Bearer 00D2w000001NWR3!ARYAQIK0LuzHrz96eusoZAJ4HkY5krtWAFujGiVI1adH6vefJZljAkJK9eXNCwD_DNpCtOaWkyQlg4vXJdtj6ZlTO9rxoqB3",
             "Content-Type": "application/json",
