@@ -2,12 +2,7 @@ const staticCacheName = 'site-static-v8';
 const dynamicCacheName = 'site-dynamic-v8';
 const assets = [
   '/',
-  'index.html',
-  "https://vishnukuppan1796-dev-ed.my.salesforce.com/services/data/v49.0"
-//   'https://vishnukuppan1796-dev-ed.my.salesforce.com/services/data/v49.0/query/?q=SELECT+id__c,dishId__c,rating__c,author__c,comment__c,date__c+from+Comment__c',
-//   'https://vishnukuppan1796-dev-ed.my.salesforce.com/services/data/v49.0/query/?q=SELECT+Id,id__c,Name__c,image__c,category__c,label__c,price__c,featured__c,description__c+from+dishes__c',
-//   'https://vishnukuppan1796-dev-ed.my.salesforce.com/services/data/v49.0/query/?q=SELECT+id__c,Name__c,Label__c,Price__c,Image__c,Featured__c,Description__c+from+Promotion__c',
-//   'https://vishnukuppan1796-dev-ed.my.salesforce.com/services/data/v49.0/query/?q=SELECT+id__c,Name__c,Image__c,Designation__c,Abbr__c,Featured__c,Description__c+from+Leader__c'
+  'index.html'
 ]
 
 this.addEventListener('install', (event) => {
@@ -65,15 +60,7 @@ this.addEventListener('fetch', evt => {
   if (evt.request.url.indexOf('vishnukuppan1796-dev-ed.my.salesforce.com') === -1) {
     evt.respondWith(
       caches.match(evt.request).then(cacheRes => {
-        return cacheRes || fetch(evt.request,{
-            headers: {
-                'Access-Control-Allow-Origin' : '*',
-                'Authorization':"Bearer 00D2w000001NWR3!ARYAQIK0LuzHrz96eusoZAJ4HkY5krtWAFujGiVI1adH6vefJZljAkJK9eXNCwD_DNpCtOaWkyQlg4vXJdtj6ZlTO9rxoqB3",
-                'Content-Type': 'application/json'
-              },
-              mode: 'no-cors'
-        }).then(fetchRes => {
-            // console.log("FETCH RESPONSE",evt.request);
+        return cacheRes || fetch(evt.request).then(fetchRes => {
           return caches.open(dynamicCacheName).then(cache => {
             cache.put(evt.request.url, fetchRes.clone());
             limitCacheSize(dynamicCacheName, 15)
