@@ -7,11 +7,11 @@ const assets = [
 ]
 
 this.addEventListener('install', (event) => {
-  console.log('service worker has been installed', event)
+//   console.log('service worker has been installed', event)
 
   event.waitUntil(
     caches.open(staticCacheName).then(cache => {
-      console.log('caching shell assets');
+    //   console.log('caching shell assets');
       cache.addAll(assets);
     })   //asyc task and again returns a promise
   )
@@ -25,7 +25,7 @@ this.addEventListener('install', (event) => {
 
 //activate service worker
 this.addEventListener('activate', (event) => {
-  console.log('service worker has been activated', event)
+//   console.log('service worker has been activated', event)
   event.waitUntil(
     caches.keys().then((keys) => {
       console.log(keys)  //keys have the names of 2 different caches (staticCacheName)..
@@ -35,14 +35,14 @@ this.addEventListener('activate', (event) => {
       )
     })
   )
-  console.log("deleted")
+//   console.log("deleted")
 
 })
 
 
 //cache size limit function
 const limitCacheSize = (name, size) => {
-  console.log('limit size initiated')
+//   console.log('limit size initiated')
   caches.open(name).then(cache => {
     cache.keys().then(keys => {
       if (keys.length > size) {
@@ -61,8 +61,12 @@ this.addEventListener('fetch', evt => {
   if (evt.request.url.indexOf('vishnukuppan1796-dev-ed.my.salesforce.com') === -1) {
     evt.respondWith(
       caches.match(evt.request).then(cacheRes => {
-        return cacheRes || fetch(evt.request).then(fetchRes => {
-            debugger
+        return cacheRes || fetch(evt.request, {headers: {
+            Authorization: "Bearer 00D2w000001NWR3!ARYAQIK0LuzHrz96eusoZAJ4HkY5krtWAFujGiVI1adH6vefJZljAkJK9eXNCwD_DNpCtOaWkyQlg4vXJdtj6ZlTO9rxoqB3",
+            "Content-Type": "application/json",
+            "X-Prettyprint": "1"
+          }}).then(fetchRes => {
+            console.log("FETCH RESPONSE",fetchRes);
           return caches.open(dynamicCacheName).then(cache => {
             cache.put(evt.request.url, fetchRes.clone());
             limitCacheSize(dynamicCacheName, 15)
@@ -79,7 +83,7 @@ this.addEventListener('fetch', evt => {
   }
 
 
-  console.log('fetch event', evt);
+//   console.log('fetch event', evt);
 
 
 });
