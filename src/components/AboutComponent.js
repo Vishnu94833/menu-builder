@@ -16,7 +16,7 @@ function RenderLeader({ leaders }) {
     <Media list>
       <div className="row">
         <div className="col-md-2">
-          <img src={leaders.image} alt={leaders.name}/>
+          <img src={leaders.image} alt={leaders.name} width="160" height=""/>
         </div>
         <div className="col-md-10">
           <h4>{leaders.name}</h4>
