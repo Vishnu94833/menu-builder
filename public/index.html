@@ -17,12 +17,22 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <button class="add-to-homescreen" hidden>Show Prompt</button>
     <script>
       if('serviceWorker' in navigator) {
           window.addEventListener('load', () => {
               navigator.serviceWorker.register('./serviceworker.js')
                   .then((reg) => console.log('Success: ', reg.scope))
                   .catch((err) => console.log('Failure: ', err));
+                  window.addEventListener('beforeinstallprompt', event => {
+                    event.preventDefault();
+                    var button = document.querySelector('button.add-to-homescreen');
+                    button.removeAttribute('hidden');
+                    button.addEventListener('click', () => {
+                      event.prompt();
+                      button.setAttribute('disabled', true);
+                    });
+                  });
           })
       }
   </script>
