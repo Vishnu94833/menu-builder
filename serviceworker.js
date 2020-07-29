@@ -3,7 +3,10 @@ const dynamicCacheName = 'site-dynamic-v8';
 const assets = [
   '/',
   'index.html',
-  'https://vishnukuppan1796-dev-ed.my.salesforce.com'
+  'https://vishnukuppan1796-dev-ed.my.salesforce.com/services/data/v49.0/query/?q=SELECT+id__c,dishId__c,rating__c,author__c,comment__c,date__c+from+Comment__c',
+  'https://vishnukuppan1796-dev-ed.my.salesforce.com/services/data/v49.0/query/?q=SELECT+Id,id__c,Name__c,image__c,category__c,label__c,price__c,featured__c,description__c+from+dishes__c',
+  'https://vishnukuppan1796-dev-ed.my.salesforce.com/services/data/v49.0/query/?q=SELECT+id__c,Name__c,Label__c,Price__c,Image__c,Featured__c,Description__c+from+Promotion__c',
+  'https://vishnukuppan1796-dev-ed.my.salesforce.com/services/data/v49.0/query/?q=SELECT+id__c,Name__c,Image__c,Designation__c,Abbr__c,Featured__c,Description__c+from+Leader__c'
 ]
 
 this.addEventListener('install', (event) => {
