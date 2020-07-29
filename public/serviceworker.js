@@ -1,3 +1,5 @@
+const { default: Axios } = require("axios");
+
 const staticCacheName = 'site-static-v8';
 const dynamicCacheName = 'site-dynamic-v8';
 const assets = [
@@ -64,7 +66,7 @@ this.addEventListener('fetch', evt => {
   if (evt.request.url.indexOf('vishnukuppan1796-dev-ed.my.salesforce.com') === -1) {
     evt.respondWith(
       caches.match(evt.request).then(cacheRes => {
-        return cacheRes || fetch(evt.request).then(fetchRes => {
+        return cacheRes || Axios.get(evt.request).then(fetchRes => {
             console.log("FETCH RESPONSE",evt.request);
           return caches.open(dynamicCacheName).then(cache => {
             cache.put(evt.request.url, fetchRes.clone());
