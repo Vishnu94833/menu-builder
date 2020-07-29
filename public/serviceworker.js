@@ -65,7 +65,12 @@ this.addEventListener('fetch', evt => {
   if (evt.request.url.indexOf('vishnukuppan1796-dev-ed.my.salesforce.com') === -1) {
     evt.respondWith(
       caches.match(evt.request).then(cacheRes => {
-        return cacheRes || fetch(evt.request).then(fetchRes => {
+        return cacheRes || fetch(evt.request,{
+            mode: 'no-cors',
+            header: {
+              'Access-Control-Allow-Origin':'*',
+            }
+        }).then(fetchRes => {
             // console.log("FETCH RESPONSE",evt.request);
           return caches.open(dynamicCacheName).then(cache => {
             cache.put(evt.request.url, fetchRes.clone());
