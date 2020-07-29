@@ -39,6 +39,7 @@ export const fetchDishes = ()=>(dispatch)=>{
     return http.get('/query/?q=SELECT+Id,id__c,Name__c,image__c,category__c,label__c,price__c,featured__c,description__c+from+dishes__c').then(response=>{
         if (response.statusText === "OK") {
             let list = [];
+            debugger
             response.data.records.forEach(element=>{
                 list.push({
                   "Id":element.Id,
@@ -54,6 +55,9 @@ export const fetchDishes = ()=>(dispatch)=>{
             }
             );
             dispatch(addDishes(list))
+            caches.open('site-dynamic-v8').then(cache=>{
+              cache.put(response.config.baseURL+response.config.url,list)
+            })
             return list;
         } else {
             var error = new Error('Error ' + response.status + ': ' + response.statusText);
@@ -101,6 +105,9 @@ export const fetchComments = ()=>(dispatch)=>{
             }
             );
             dispatch(addComments(list))
+            caches.open('site-dynamic-v8').then(cache=>{
+              cache.put(response.config.baseURL+response.config.url,list)
+            })
             return list;
         } else {
             var error = new Error('Error ' + response.status + ': ' + response.statusText);
@@ -144,6 +151,9 @@ export const fetchPromos = ()=>(dispatch)=>{
             }
             );
             dispatch(addPromos(list))
+            caches.open('site-dynamic-v8').then(cache=>{
+              cache.put(response.config.baseURL+response.config.url,list)
+            })
             return list;
         } else {
             var error = new Error('Error ' + response.status + ': ' + response.statusText);
@@ -190,6 +200,9 @@ export const fetchLeaders = ()=>(dispatch)=>{
             }
             );
             dispatch(addleaders(list))
+            caches.open('site-dynamic-v8').then(cache=>{
+              cache.put(response.config.baseURL+response.config.url,list)
+            })
             return list;
         } else {
             var error = new Error('Error ' + response.status + ': ' + response.statusText);
