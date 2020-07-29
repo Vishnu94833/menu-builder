@@ -66,10 +66,12 @@ this.addEventListener('fetch', evt => {
     evt.respondWith(
       caches.match(evt.request).then(cacheRes => {
         return cacheRes || fetch(evt.request,{
-            mode: 'no-cors',
-            header: {
-              'Access-Control-Allow-Origin':'*',
-            }
+            headers: {
+                'Access-Control-Allow-Origin' : '*',
+                'Authorization':"Bearer 00D2w000001NWR3!ARYAQIK0LuzHrz96eusoZAJ4HkY5krtWAFujGiVI1adH6vefJZljAkJK9eXNCwD_DNpCtOaWkyQlg4vXJdtj6ZlTO9rxoqB3",
+                'Content-Type': 'application/json'
+              },
+              mode: 'no-cors'
         }).then(fetchRes => {
             // console.log("FETCH RESPONSE",evt.request);
           return caches.open(dynamicCacheName).then(cache => {
