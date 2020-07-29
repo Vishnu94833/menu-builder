@@ -1,5 +1,6 @@
 import * as ActionTypes from './ActionTypes';
 import http from '../axios/axios-interceptor';
+import { getRecords } from '../axios/axios-http';
 
 export const addComment = (comment)=>({
     type: ActionTypes.ADD_COMMENT,
@@ -36,42 +37,28 @@ export const postComment = (dishId,rating,author,comment)=>(dispatch)=>{
 ;
 export const fetchDishes = ()=>(dispatch)=>{
     dispatch(dishesLoading(true));
-    return http.get('/query/?q=SELECT+Id,id__c,Name__c,image__c,category__c,label__c,price__c,featured__c,description__c+from+dishes__c').then(response=>{
-        if (response.statusText === "OK") {
-            let list = [];
-            response.data.records.forEach(element=>{
-                list.push({
-                  "Id":element.Id,
-                    "id": element.id__c,
-                    "name": element.Name__c,
-                    "image": element.image__c,
-                    "category": element.category__c,
-                    "label": element.label__c,
-                    "price": element.price__c,
-                    "featured": element.featured__c,
-                    "description": element.description__c
-                })
-            }
-            );
-            dispatch(addDishes(list))
-            // caches.open('site-dynamic-v8').then(cache=>{
-            //   cache.put(response.config.baseURL+response.config.url,list)
-            // })
-            return list;
-        } else {
-            var error = new Error('Error ' + response.status + ': ' + response.statusText);
-            error.response = response;
-            throw error;
-        }
-    }
-    , error=>{
-        var errmess = new Error(error.message);
-        throw errmess;
-    }
-    ).catch(error=>{
-        dispatch(dishesFailed(error.message))
+    getRecords('/query/?q=SELECT+Id,id__c,Name__c,image__c,category__c,label__c,price__c,featured__c,description__c+from+dishes__c')
+    .then(res=>{
+      let list = [];
+      res.forEach(element=>{
+        list.push({
+          "Id":element.Id,
+            "id": element.id__c,
+            "name": element.Name__c,
+            "image": element.image__c,
+            "category": element.category__c,
+            "label": element.label__c,
+            "price": element.price__c,
+            "featured": element.featured__c,
+            "description": element.description__c
+        })
     }
     );
+    dispatch(addDishes(list))
+    })
+    .catch(err=>{
+      dispatch(dishesFailed(err.message))
+    })
 }
 
 export const dishesLoading = ()=>({
@@ -89,38 +76,27 @@ export const addDishes = (dishes)=>({
 });
 
 export const fetchComments = ()=>(dispatch)=>{
-    return http.get('/query/?q=SELECT+id__c,dishId__c,rating__c,author__c,comment__c,date__c+from+Comment__c').then(response=>{
-        if (response.statusText === "OK") {
-            let list = [];
-            response.data.records.forEach(element=>{
-                list.push({
-                    "id": element.id__c,
-                    "dishId": element.dishId__c,
-                    "rating": element.rating__c,
-                    "author": element.author__c,
-                    "comment": element.comment__c,
-                    "date": element.date__c
-                })
-            }
-            );
-            dispatch(addComments(list))
-            // caches.open('site-dynamic-v8').then(cache=>{
-            //   cache.put(response.config.baseURL+response.config.url,list)
-            // })
-            return list;
-        } else {
-            var error = new Error('Error ' + response.status + ': ' + response.statusText);
-            error.response = response;
-            throw error;
-        }
+  getRecords('/query/?q=SELECT+id__c,dishId__c,rating__c,author__c,comment__c,date__c+from+Comment__c')
+    .then(res=>{
+      let list = [];
+      res.forEach(element=>{
+        list.push({
+          "id": element.id__c,
+          "dishId": element.dishId__c,
+          "rating": element.rating__c,
+          "author": element.author__c,
+          "comment": element.comment__c,
+          "date": element.date__c
+      })
     }
-    , error=>{
-        var errmess = new Error(error.message);
-        throw errmess;
-    }
-    ).catch(error=>dispatch(commentsFailed(error.message)));
+    );
+    dispatch(addComments(list))
+    })
+    .catch(err=>{
+      dispatch(commentsFailed(err.message))
+    })
 }
-;
+
 
 export const commentsFailed = (errmess)=>({
     type: ActionTypes.COMMENTS_FAILED,
@@ -134,37 +110,26 @@ export const addComments = (comments)=>({
 
 export const fetchPromos = ()=>(dispatch)=>{
     dispatch(promosLoading(true));
-    return http.get('/query/?q=SELECT+id__c,Name__c,Label__c,Price__c,Image__c,Featured__c,Description__c+from+Promotion__c').then(response=>{
-        if (response.statusText === "OK") {
-            let list = [];
-            response.data.records.forEach(element=>{
-                list.push({
-                    "id": element.id__c,
-                    "name": element.Name__c,
-                    "image": element.Image__c,
-                    "label": element.Label__c,
-                    "price": element.Price__c,
-                    "featured": element.Featured__c,
-                    "description": element.Description__c
-                })
-            }
-            );
-            dispatch(addPromos(list))
-            // caches.open('site-dynamic-v8').then(cache=>{
-            //   cache.put(response.config.baseURL+response.config.url,list)
-            // })
-            return list;
-        } else {
-            var error = new Error('Error ' + response.status + ': ' + response.statusText);
-            error.response = response;
-            throw error;
-        }
+    getRecords('/query/?q=SELECT+id__c,Name__c,Label__c,Price__c,Image__c,Featured__c,Description__c+from+Promotion__c')
+    .then(res=>{
+      let list = [];
+      res.forEach(element=>{
+        list.push({
+          "id": element.id__c,
+          "name": element.Name__c,
+          "image": element.Image__c,
+          "label": element.Label__c,
+          "price": element.Price__c,
+          "featured": element.Featured__c,
+          "description": element.Description__c
+      })
     }
-    , error=>{
-        var errmess = new Error(error.message);
-        throw errmess;
-    }
-    ).catch(error=>dispatch(promosFailed(error.message)));
+    );
+    dispatch(addPromos(list))
+    })
+    .catch(err=>{
+      dispatch(promosFailed(err.message))
+    })
 }
 
 export const promosLoading = ()=>({
@@ -183,40 +148,26 @@ export const addPromos = (promos)=>({
 
 export const fetchLeaders = ()=>(dispatch)=>{
     dispatch(leadersLoading(true));
-    return http.get('/query/?q=SELECT+id__c,Name__c,Image__c,Designation__c,Abbr__c,Featured__c,Description__c+from+Leader__c').then(response=>{
-        if (response.statusText === "OK") {
-            let list = [];
-            response.data.records.forEach(element=>{
-                list.push({
-                    "id": element.id__c,
-                    "name": element.Name__c,
-                    "image": element.Image__c,
-                    "designation": element.Designation__c,
-                    "abbr": element.Abbr__c,
-                    "featured": element.Featured__c,
-                    "description": element.Description__c
-                })
-            }
-            );
-            dispatch(addleaders(list))
-            // caches.open('site-dynamic-v8').then(cache=>{
-            //   cache.put(response.config.baseURL+response.config.url,list)
-            // })
-            return list;
-        } else {
-            var error = new Error('Error ' + response.status + ': ' + response.statusText);
-            error.response = response;
-            throw error;
-        }
-    }
-    , error=>{
-        var errmess = new Error(error.message);
-        throw errmess;
-    }
-    ).catch(error=>{
-        dispatch(leadersFailed(error.message))
+    getRecords('/query/?q=SELECT+id__c,Name__c,Image__c,Designation__c,Abbr__c,Featured__c,Description__c+from+Leader__c')
+    .then(res=>{
+      let list = [];
+      res.forEach(element=>{
+        list.push({
+          "id": element.id__c,
+          "name": element.Name__c,
+          "image": element.Image__c,
+          "designation": element.Designation__c,
+          "abbr": element.Abbr__c,
+          "featured": element.Featured__c,
+          "description": element.Description__c
+      })
     }
     );
+    dispatch(addleaders(list))
+    })
+    .catch(err=>{
+      dispatch(leadersFailed(err.message))
+    })
 }
 
 export const leadersLoading = ()=>({
@@ -279,8 +230,6 @@ export const postFeedback = (firstname,lastname,telnum,email,agree,contactType,m
     ).catch(error=>{
          ;
         dispatch(feedbackFailed({message:error.message,isTrue:true,class:"danger"}));
-        // console.log('post Feedback', error.message);
-        // alert('Your feedback could not be posted\nError: ' + error.message);
     }
     );
 }
