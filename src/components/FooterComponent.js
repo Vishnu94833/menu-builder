@@ -14,7 +14,7 @@ function Footer(props) {
         <div className="container text-center text-md-left">
           <div className="row">
           <div className="col-md-3 mb-md-0 mb-3">
-              <a href="home">
+              <a href="#/home">
               <img src="assets/images/logo-1.png" alt="Lorem ipsum" width="150" height="100"/>
               </a>
             </div>
