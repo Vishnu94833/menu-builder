@@ -57,7 +57,7 @@ const limitCacheSize = (name, size) => {
 //intercepting requests
 this.addEventListener('fetch', evt => {
   //check to avoid this if the request it to google database api
-  if (evt.request.url.indexOf('firestore.googleapis.com') === -1) {
+  if (evt.request.url.indexOf('vishnukuppan1796-dev-ed.my.salesforce.com') === -1) {
     evt.respondWith(
       caches.match(evt.request).then(cacheRes => {
         return cacheRes || fetch(evt.request).then(fetchRes => {
@@ -68,9 +68,9 @@ this.addEventListener('fetch', evt => {
           })
         });
       }).catch(() => {
-        if (evt.request.url.indexOf('.html') > -1) { //can also be done for different resource type.
-          return caches.match('/pages/fallback.html');
-        }
+        // if (evt.request.url.indexOf('.html') > -1) { //can also be done for different resource type.
+        //   return caches.match('/pages/fallback.html');
+        // }
 
       })
     );
