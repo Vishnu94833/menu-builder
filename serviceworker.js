@@ -64,9 +64,8 @@ this.addEventListener('fetch', evt => {
   if (evt.request.url.indexOf('vishnukuppan1796-dev-ed.my.salesforce.com') === -1) {
     evt.respondWith(
       caches.match(evt.request).then(cacheRes => {
-        console.log("FETCH RESPONSE cacheRes",cacheRes);
         return cacheRes || fetch(evt.request).then(fetchRes => {
-            console.log("FETCH RESPONSE",fetchRes);
+            console.log("FETCH RESPONSE",evt.request);
           return caches.open(dynamicCacheName).then(cache => {
             cache.put(evt.request.url, fetchRes.clone());
             limitCacheSize(dynamicCacheName, 15)
