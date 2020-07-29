@@ -1,12 +1,4 @@
 import axios from "axios";
-
-// axios.create({
-//   baseURL: `http://jsonplaceholder.typicode.com`,
-//   headers: {
-//     "Content-type": "application/json"
-//   },
-
-// });
 const instance = axios.create({
   baseURL:
     "https://vishnukuppan1796-dev-ed.my.salesforce.com/services/data/v49.0",
