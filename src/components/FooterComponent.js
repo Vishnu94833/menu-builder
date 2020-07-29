@@ -10,21 +10,21 @@ function Footer(props) {
   ];
   return (
     <div className="footer">
-      <footer class="page-footer font-small blue pt-4">
-        <div class="container text-center text-md-left">
-          <div class="row">
-          <div class="col-md-3 mb-md-0 mb-3">
+      <footer className="page-footer font-small blue pt-4">
+        <div className="container text-center text-md-left">
+          <div className="row">
+          <div className="col-md-3 mb-md-0 mb-3">
               <img src="assets/images/logo-1.png" alt="Lorem ipsum" width="150" height="100"/>
             </div>
-            <div class="col-md-3 mb-md-0 mb-3">
-              <h5 class="text-uppercase">Links</h5>
-              <ul class="list-unstyled">
+            <div className="col-md-3 mb-md-0 mb-3">
+              <h5 className="text-uppercase">Links</h5>
+              <ul className="list-unstyled">
                 <Links footerLinks={footerLinks} />
               </ul>
             </div>
 
-            <div class="col-md-6 mt-md-0 mt-3">
-              <h5 class="text-uppercase">Lorem ipsum</h5>
+            <div className="col-md-6 mt-md-0 mt-3">
+              <h5 className="text-uppercase">Lorem ipsum</h5>
               <p>
                 Lorem ipsum dolor sit amet consectetur adipiscing elit, urna
                 consequat felis vehicula class ultricies mollis dictumst, aenean
@@ -36,7 +36,7 @@ function Footer(props) {
             </div>
           </div>
         </div>
-        <div class="footer-copyright text-center py-3">
+        <div className="footer-copyright text-center py-3">
           © 2020 Copyright Lorem ipsum
         </div>
       </footer>
