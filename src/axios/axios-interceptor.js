@@ -1,7 +1,9 @@
 import axios from "axios";
+import { baseUrl } from "../shared/baseUrl";
+
 const instance = axios.create({
   baseURL:
-    "https://vishnukuppan1796-dev-ed.my.salesforce.com/services/data/v49.0",
+  baseUrl,
   headers: {
     'Access-Control-Allow-Origin' : '*',
     'Authorization':"Bearer 00D2w000001NWR3!ARYAQIK0LuzHrz96eusoZAJ4HkY5krtWAFujGiVI1adH6vefJZljAkJK9eXNCwD_DNpCtOaWkyQlg4vXJdtj6ZlTO9rxoqB3",
