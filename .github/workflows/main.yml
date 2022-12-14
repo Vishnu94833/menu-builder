@@ -62,7 +62,7 @@ jobs:
         run: |
           git config --global user.name 'vishnu94833'
           git config --global user.email 'vishnu94833@gmail.com'
-          git remote set-url origin https://github.com/Vishnu94833/menu-builder.git
+          git remote set-url origin ssh:git@github.com:Vishnu94833/menu-builder.git
           
         # Run npm build command for Vue project
       - name: Build Project
