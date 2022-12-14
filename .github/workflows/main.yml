@@ -64,7 +64,7 @@ jobs:
 
         # Push built code to the upfront created GH pages repo
       - name: Pushes to another repository
-        uses: cpina/github-action-push-to-another-repository@master
+        uses: ad-m/github-push-action@master
         env:
           # Create and store API_TOKEN_GITHUB in repository 
           # secrets -> explained later in this article
