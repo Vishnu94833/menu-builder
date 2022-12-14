@@ -57,6 +57,12 @@ jobs:
         # Run npm commands to install NPM packages
       - name: Install dependencies
         run: npm install
+        
+      - name: Who am I (temp-set)
+        run: |
+          system('git config --global user.email "vishnu94833@gmail.com")
+          system('git config --global user.name "Vishnu Kuppan")
+        shell: Rscript {0}
 
         # Run npm build command for Vue project
       - name: Build Project
