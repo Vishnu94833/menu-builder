@@ -11,7 +11,8 @@ const store = ConfigureStore();
 
 class App extends Component{
   render(){
- console.log(process?.env?.CONSUMER_KEY);
+ console.log(process?.env?.REACT_APP_CONSUMER_KEY);
+ console.log(process?.env?.REACT_APP_CONSUMER_SECRET);
 
   return (
     <Provider store={store}>
