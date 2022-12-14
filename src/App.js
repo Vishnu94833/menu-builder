@@ -10,8 +10,9 @@ const history = createHistory()
 const store = ConfigureStore();
 
 class App extends Component{
- 
   render(){
+ console.log(process?.env?.CONSUMER_KEY);
+
   return (
     <Provider store={store}>
     <HashRouter history={history}>
