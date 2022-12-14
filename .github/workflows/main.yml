@@ -58,11 +58,16 @@ jobs:
       - name: Install dependencies
         run: npm install
         
-      - name: Configure CI Git User
-        run: |
-          git config --global user.name 'vishnu94833'
-          git config --global user.email 'vishnu94833@gmail.com'
-          git remote set-url origin ssh:git@github.com:Vishnu94833/menu-builder.git
+          
+      - name: Git config user
+        # You may pin to the exact commit or the version.
+        # uses: snow-actions/git-config-user@84b24d833b169b1a874be9fae7a7128a57babba2
+        uses: snow-actions/git-config-user@v1.0.0
+        with:
+        # git config user.name
+          name: 'vishnu94833' # optional, default is github-actions[bot]
+        # git config user.email
+          email: 'vishnu94833@gmail.com' # optional, default is 41898282+github-actions[bot]@users.noreply.github.com
           
         # Run npm build command for Vue project
       - name: Build Project
