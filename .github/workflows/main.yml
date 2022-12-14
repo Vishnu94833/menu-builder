@@ -1,0 +1,82 @@
+# Name that will define how it shows up in 
+# your Github Action overview for this repository
+name: Build and Deploy
+
+
+# Defines what events the workflow will listen to in repository
+# In this case commits and pull-requests on master-branch
+on:
+  push:
+    branches: [master]
+  pull_request:
+    branches: [master]
+
+# What jobs will run in your workflow -> build_and_deploy
+# Jobs can run in parallel or sequentially
+jobs:
+  build_and_deploy:
+    # Type of runner that this job wil run on -> Linux Ubuntu
+    runs-on: ubuntu-latest
+
+    # Define which node version to use in the runner.
+    # Use node version 12.20.0, latest Node LTS version 
+    strategy:
+      matrix:
+        node-version: [12.20.0]
+
+    # Steps that are part of the build_and_deploy job
+    # Steps represent a sequence of tasks that will be executed
+    steps:
+        # Action that will checkout repository so the workflow can 
+        # access the codebase
+      - uses: actions/checkout@v2
+
+        # Action allowing caching of node_modules to improve 
+        # workflow execution time
+        # {{runner.os}} will use defined runner 'ubuntu-latest'
+      - name: Cache node_modules
+        uses: actions/cache@v2
+        env:
+          cache-name: cache-node-modules
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-build-${{ env.cache-name}}-${{hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-build-${{ env.cache-name }}-
+            ${{ runner.os }}-build-
+            ${{ runner.os }}-
+
+        # Sets node environment for use in action
+        # {{matrix.node-version}} will use Github default Node.js 
+        # version
+      - name: Node ${{matrix.node-version}}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{matrix.node-version}}
+
+        # Run npm commands to install NPM packages
+      - name: Install dependencies
+        run: npm install
+
+        # Run npm build command for Vue project
+      - name: Build Project
+        run: npm run deploy
+
+        # Push built code to the upfront created GH pages repo
+      - name: Pushes to another repository
+        uses: cpina/github-action-push-to-another-repository@master
+        env:
+          # Create and store API_TOKEN_GITHUB in repository 
+          # secrets -> explained later in this article
+          CONSUMER_KEY: ${{ secrets.CONSUMER_KEY }}
+          CONSUMER_SECRET: ${{ secrets.CONSUMER_SECRET }}
+          REACT_APP_CONSUMER_KEY: ${{ secrets.CONSUMER_KEY }}
+          REACT_APP_CONSUMER_SECRET: ${{ secrets.CONSUMER_SECRET }}
+        with:
+          # Define source directory to push from -> Vue default 
+          # built into /dist folder
+          source-directory: 'dist'
+          # Set user settings and repository to push to
+          destination-github-username: 'Vishnu94833'
+          destination-repository-name: 'menu-builder'
+          user-email: vishnu94833@gmail.com
