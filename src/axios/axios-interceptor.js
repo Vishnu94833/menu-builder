@@ -6,7 +6,7 @@ const instance = axios.create({
   baseUrl,
   headers: {
     'Access-Control-Allow-Origin' : '*',
-    'Authorization':"Bearer 00D2w000001NWR3!ARYAQCpxEziq028sSMycan9eR1i2NN5gwSvBXPtmkYZBTSeoBRfJX94Hwns4Fmd3DVHAtrGV8oDj43n3zpq3AuSBDPqhnzKm",
+    'Authorization':"Bearer 00D2w000001NWR3!ARYAQAvOtOfRI.tcOlqZlC_NVRCO_Bo_OxBzH.J0lDOfWJkCd1nx_43c9NFj27ekyRxxhoSuMb4cJMjX.Qme8Jp2QkPcRmKY",
     'Content-Type': 'application/json'
   },
   mode: 'no-cors'
