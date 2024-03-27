@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem, Jumbotron,Button, Modal, ModalHeader, ModalBody,
+import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem,Button, Modal, ModalHeader, ModalBody,
     Form, FormGroup, Input, Label } from 'reactstrap';
 import { NavLink } from 'react-router-dom';
 
@@ -86,7 +86,7 @@ class Header extends Component {
                         </Form>
                     </ModalBody>
                 </Modal>
-                <Jumbotron>
+                {/* <Jumbotron> */}
                     <div className="container">
                         <div className="row row-header">
                             <div className="col-12 col-sm-6">
@@ -95,7 +95,7 @@ class Header extends Component {
                             </div>
                         </div>
                     </div>
-                </Jumbotron>
+                {/* </Jumbotron> */}
             </div>
         );
     }

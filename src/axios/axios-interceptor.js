@@ -1,19 +1,19 @@
 import axios from "axios";
 import { baseUrl } from "../shared/baseUrl";
 
-const bearer_token = axios.post(
-  'https://login.salesforce.com/services/oauth2/token',
-  'grant_type=password&client_id=3MVG9n_HvETGhr3AazYjvGsJ70HSZv9TqYY81dRsIJyTi7.zPcREMYOSlUCAaSWvjnX8GF3.98xdTuLEGzPSJ&client_secret=C747F19398D0897C2196E1CB77FA4DA6B9827372853036FCD1D0C46DC12FB0DE&username=vishnukuppan1796@gmail.com&password=1hk16CS003',
-  {
-    headers: {
-      'Access-Control-Allow-Origin' : '*',
-      'Content-Type': 'application/x-www-form-urlencoded'
-    }
-  }
-).then((res)=>{
+// const bearer_token = axios.post(
+//   'https://login.salesforce.com/services/oauth2/token',
+//   'grant_type=password&client_id=3MVG9n_HvETGhr3AazYjvGsJ70HSZv9TqYY81dRsIJyTi7.zPcREMYOSlUCAaSWvjnX8GF3.98xdTuLEGzPSJ&client_secret=C747F19398D0897C2196E1CB77FA4DA6B9827372853036FCD1D0C46DC12FB0DE&username=vishnukuppan1796@gmail.com&password=1hk16CS003',
+//   {
+//     headers: {
+//       'Access-Control-Allow-Origin' : '*',
+//       'Content-Type': 'application/x-www-form-urlencoded'
+//     }
+//   }
+// ).then((res)=>{
 
-  debugger
-})
+//   debugger
+// })
 
 const instance = axios.create({
   baseURL:

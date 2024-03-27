@@ -1,10 +1,10 @@
-import { createStore, combineReducers, applyMiddleware } from "redux";
+import { legacy_createStore as createStore, combineReducers, applyMiddleware } from "redux";
 import { Dishes } from "./dishes";
 import { Comments } from "./comments";
 import { Promotions } from "./promotions";
 import { Leaders } from "./leaders";
 
-import thunk from "redux-thunk";
+// import thunk from "redux-thunk";
 import { Feedback } from "./feedback";
 
 export const ConfigureStore = () => {
@@ -16,7 +16,7 @@ export const ConfigureStore = () => {
       leaders: Leaders,
       feedBack: Feedback,
     }),
-    applyMiddleware(thunk)
+    // applyMiddleware(thunk)
   );
 
   return store;

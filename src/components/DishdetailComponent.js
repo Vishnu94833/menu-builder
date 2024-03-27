@@ -16,19 +16,19 @@ import {
   Col,
 } from "reactstrap";
 import { Link } from "react-router-dom";
-import { LocalForm, Control, Errors } from "react-redux-form";
+// import { LocalForm, Control, Errors } from "react-redux-form";
 import { Loading } from "./LoadingComponent";
-import { FadeTransform, Fade, Stagger } from "react-animation-components";
+// import { FadeTransform, Fade, Stagger } from "react-animation-components";
 
 function RenderComments({ comments, postComment, dishId }) {
   if (comments !== null) {
     return (
       <div className="col-md-7 col-12">
         <h4>Comments</h4>
-        <Stagger in>
+        {/* <Stagger in> */}
           {comments.map((comment) => {
             return (
-              <Fade in>
+              // <Fade in>
                 <Card body key={comment.id} className="my-2">
                   <CardTitle>{comment.comment}</CardTitle>
                   <CardText>
@@ -39,10 +39,10 @@ function RenderComments({ comments, postComment, dishId }) {
                       day: "2-digit",
                     }).format(new Date(Date.parse(comment.date)))}</CardText>
                 </Card>
-              </Fade>
+              // </Fade>
             );
           })}
-        </Stagger>
+        {/* </Stagger> */}
         <CommentForm dishId={dishId} postComment={postComment} />
       </div>
     );
@@ -60,12 +60,12 @@ function RenderComments({ comments, postComment, dishId }) {
 function RenderDish({ dish }) {
   if (dish != null)
     return (
-      <FadeTransform
-        in
-        transformProps={{
-          exitTransform: "scale(0.5) translateY(-50%)",
-        }}
-      >
+      // <FadeTransform
+      //   in
+      //   transformProps={{
+      //     exitTransform: "scale(0.5) translateY(-50%)",
+      //   }}
+      // >
         <Card>
           <CardImg top src={dish.image} alt={dish.name} />
           <CardBody>
@@ -73,7 +73,7 @@ function RenderDish({ dish }) {
             <CardText>{dish.description}</CardText>
           </CardBody>
         </Card>
-      </FadeTransform>
+      // </FadeTransform>
     );
   else
     return (
@@ -179,7 +179,7 @@ class CommentForm extends Component {
         <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
           <ModalHeader toggle={this.toggleModal}>Submit Comment</ModalHeader>
           <ModalBody>
-            <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
+            {/* <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
               <Row className="form-group">
                 <Label htmlFor="firstname" md={2}>
                   Rating
@@ -248,7 +248,7 @@ class CommentForm extends Component {
                   </Button>
                 </Col>
               </Row>
-            </LocalForm>
+            </LocalForm> */}
           </ModalBody>
         </Modal>
       </>

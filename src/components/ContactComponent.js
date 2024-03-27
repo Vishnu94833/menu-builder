@@ -8,7 +8,7 @@ import {
   Row,
   Alert,
 } from "reactstrap";
-import { Control, LocalForm, Errors } from "react-redux-form";
+// import { Control, LocalForm, Errors } from "react-redux-form";
 
 class Contact extends Component {
   constructor(props) {
@@ -105,7 +105,7 @@ class Contact extends Component {
           <div className="col-12 col-md-9">
         <AlertBox message={this.props.success} isTrue={this.props.isTrue} color={this.props.color}/>
 
-            <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
+            {/* <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
             <Row className="form-group">
                                 <Label htmlFor="firstname" md={2}>First Name</Label>
                                 <Col md={10}>
@@ -239,7 +239,7 @@ class Contact extends Component {
                   </Button>
                 </Col>
               </Row>
-            </LocalForm>
+            </LocalForm> */}
           </div>
         </div>
       </div>

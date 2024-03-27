@@ -11,7 +11,7 @@ import {
   Row,
   Col,
 } from "reactstrap";
-import { LocalForm, Control, Errors } from "react-redux-form";
+// import { LocalForm, Control, Errors } from "react-redux-form";
 
 class CommentForm extends Component {
   constructor(props) {
@@ -47,7 +47,7 @@ class CommentForm extends Component {
         <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
           <ModalHeader toggle={this.toggleModal}>Submit Comment</ModalHeader>
           <ModalBody>
-            <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
+            {/* <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
               <Row className="form-group">
                 <Label htmlFor="firstname" md={2}>
                   Rating
@@ -108,7 +108,7 @@ class CommentForm extends Component {
                   </Button>
                 </Col>
               </Row>
-            </LocalForm>
+            </LocalForm> */}
           </ModalBody>
         </Modal>
       </>
