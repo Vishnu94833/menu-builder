@@ -11,7 +11,8 @@
     "moduleResolution": "node", // Module resolution strategy (adjust if needed)
     "jsx": "react-jsx", // JSX transform (set to 'react-jsxdev' for debugging)
     "declaration": false, // Omit declaration files (usually not needed in React apps)
-    "outDir": "build" // Output directory for compiled files (optional)
+    "outDir": "build", // Output directory for compiled files (optional)
+    "types": ["node", "jest"]
   },
   "include": ["src"] // Include source files for compilation
 }

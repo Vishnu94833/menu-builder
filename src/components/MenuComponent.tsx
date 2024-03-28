@@ -1,14 +1,13 @@
-import React, { Component } from "react";
+import { Component } from "react";
+import { Link } from "react-router-dom";
 import {
+  Breadcrumb,
+  BreadcrumbItem,
   Card,
   CardImg,
   CardImgOverlay,
   CardTitle,
-  Breadcrumb,
-  BreadcrumbItem,
 } from "reactstrap";
-import { Link } from "react-router-dom";
-import { Loading } from "./LoadingComponent";
 
 
 class Menu extends Component {

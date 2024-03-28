@@ -1,24 +1,19 @@
-import React, { Component } from "react";
+import { Component } from "react";
+import { Link } from "react-router-dom";
 import {
-  Card,
-  CardImg,
-  CardText,
-  CardBody,
-  CardTitle,
   Breadcrumb,
   BreadcrumbItem,
   Button,
+  Card,
+  CardBody,
+  CardImg,
+  CardText,
+  CardTitle,
   Modal,
-  ModalHeader,
   ModalBody,
-  Row,
-  Label,
-  Col,
+  ModalHeader
 } from "reactstrap";
-import { Link } from "react-router-dom";
-// import { LocalForm, Control, Errors } from "react-redux-form";
 import { Loading } from "./LoadingComponent";
-// import { FadeTransform, Fade, Stagger } from "react-animation-components";
 
 function RenderComments({ comments, postComment, dishId }:any) {
   if (comments !== null) {

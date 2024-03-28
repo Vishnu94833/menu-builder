@@ -1,11 +1,10 @@
-import React from "react";
 import {
-  Card,
-  CardImg,
-  CardText,
-  CardBody,
-  CardTitle,
-  CardSubtitle,
+    Card,
+    CardBody,
+    CardImg,
+    CardSubtitle,
+    CardText,
+    CardTitle,
 } from "reactstrap";
 import { Loading } from "./LoadingComponent";
 // import { FadeTransform } from 'react-animation-components';

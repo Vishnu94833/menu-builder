@@ -7,7 +7,6 @@ import {
 } from "reactstrap";
 import { CommentProps } from "../core/props/comment.props";
 import { CommentState } from "../core/state/comment.state";
-// import { LocalForm, Control, Errors } from "react-redux-form";
 
 class CommentForm extends Component<CommentProps, CommentState> {
   constructor(props: {}) {

@@ -1,12 +1,9 @@
-import React, { Component } from "react";
-import { BrowserRouter, HashRouter } from "react-router-dom";
-import "./App.css";
+import { Component } from "react";
 import { Provider } from "react-redux";
-// import { ConfigureStore } from './redux/configureStore';
+import { BrowserRouter } from "react-router-dom";
+import "./App.css";
 import Main from "./components/MainComponent";
 import { ConfigureStore } from "./redux/configureStore";
-// import { createBrowserHistory as createHistory } from 'history'
-// const history = createHistory()
 
 const store = ConfigureStore();
 
