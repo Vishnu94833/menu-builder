@@ -1,38 +1,13 @@
 /* eslint-disable no-undef */
 /* eslint-disable no-unused-vars */
-import React, { Component, useState } from "react";
-import {
-  Button,
-  Label,
-  Col,
-  Row,
-  Alert,
-} from "reactstrap";
+import { Component, useState } from "react";
+import { Alert } from "reactstrap";
+import { ContactProps } from "../core/props/contact.props";
+import { ContactState } from "../core/state/contact.state";
 // import { Control, LocalForm, Errors } from "react-redux-form";
 
-interface Props {
-  success: string;
-  isTrue:boolean;
-  color: string;
-  postFeedback: (a:any,b:any,c:any,d:any,e:any,f:any,g:any) => void
-}
-
-class Contact extends Component<Props,{
-  firstname: "",
-  lastname: "",
-  telnum: "",
-  email: "",
-  agree: false,
-  contactType: "Tel.",
-  message: "",
-  touched: {
-    firstname: false,
-    lastname: false,
-    telnum: false,
-    email: false,
-  },
-} > {
-  constructor(props:any) {
+class Contact extends Component<ContactProps, ContactState> {
+  constructor(props: any) {
     super(props);
 
     this.state = {
@@ -55,10 +30,9 @@ class Contact extends Component<Props,{
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleBlur = this.handleBlur.bind(this);
   }
-  componentDidMount() {
-  }
+  componentDidMount() {}
 
-  handleInputChange(event:any) {
+  handleInputChange(event: any) {
     const target = event.target;
     const value = target.type === "checkbox" ? target.checked : target.value;
     const name = target.name;
@@ -68,17 +42,25 @@ class Contact extends Component<Props,{
     // });
   }
 
-  handleSubmit(values:any) {
-    this.props.postFeedback(values.firstname, values.lastname, values.telnum, values.email,values.agree,values.contactType,values.message)
+  handleSubmit(values: any) {
+    this.props.postFeedback(
+      values.firstname,
+      values.lastname,
+      values.telnum,
+      values.email,
+      values.agree,
+      values.contactType,
+      values.message
+    );
   }
 
-  handleBlur = (field:any) => (evt:any) => {
+  handleBlur = (field: any) => (evt: any) => {
     this.setState({
       touched: { ...this.state.touched, [field]: true },
     });
   };
 
-  validate(firstname:any, lastname:any, telnum:any) {
+  validate(firstname: any, lastname: any, telnum: any) {
     const errors = {
       firstname: "",
       lastname: "",
@@ -111,11 +93,11 @@ class Contact extends Component<Props,{
       this.state.lastname,
       this.state.telnum
     );
-    const required = (val:any) => val && val.length;
-    const maxLength = (len:any) => (val:any) => !val || val.length <= len;
-    const minLength = (len:any) => (val:any) => val && val.length >= len;
-    const isNumber = (val:any) => !isNaN(Number(val));
-    const validEmail = (val:any) =>
+    const required = (val: any) => val && val.length;
+    const maxLength = (len: any) => (val: any) => !val || val.length <= len;
+    const minLength = (len: any) => (val: any) => val && val.length >= len;
+    const isNumber = (val: any) => !isNaN(Number(val));
+    const validEmail = (val: any) =>
       /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(val);
     return (
       <div className="container">
@@ -124,7 +106,11 @@ class Contact extends Component<Props,{
             <h3>Send us your Feedback</h3>
           </div>
           <div className="col-12 col-md-9">
-        <AlertBox message={this.props.success} isTrue={this.props.isTrue} color={this.props.color}/>
+            <AlertBox
+              message={this.props.success}
+              isTrue={this.props.isTrue}
+              color={this.props.color}
+            />
 
             {/* <LocalForm onSubmit={(values) => this.handleSubmit(values)}>
             <Row className="form-group">
@@ -268,7 +254,7 @@ class Contact extends Component<Props,{
   }
 }
 
-function AlertBox({message,isTrue,color}:any){
+function AlertBox({ message, isTrue, color }: any) {
   const [visible, setVisible] = useState(true);
 
   const onDismiss = () => setVisible(false);
@@ -276,14 +262,12 @@ function AlertBox({message,isTrue,color}:any){
   if (isTrue === true) {
     return (
       <Alert color={color} isOpen={visible} toggle={onDismiss}>
-            {message}
-    </Alert>     
+        {message}
+      </Alert>
     );
-  }
-  else{
+  } else {
     return <div></div>;
   }
-
 }
 
 export default Contact;

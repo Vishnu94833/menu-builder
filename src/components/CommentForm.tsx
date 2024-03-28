@@ -1,19 +1,15 @@
-import React, { Component } from "react";
+import { Component } from "react";
 import {
   Button,
   Modal,
-  ModalHeader,
   ModalBody,
-  Label,
-  Input,
-  Form,
-  FormGroup,
-  Row,
-  Col,
+  ModalHeader
 } from "reactstrap";
+import { CommentProps } from "../core/props/comment.props";
+import { CommentState } from "../core/state/comment.state";
 // import { LocalForm, Control, Errors } from "react-redux-form";
 
-class CommentForm extends Component<{}, {isModalOpen:boolean, isNavOpen: boolean}> {
+class CommentForm extends Component<CommentProps, CommentState> {
   constructor(props: {}) {
     super(props);
 

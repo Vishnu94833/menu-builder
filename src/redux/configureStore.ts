@@ -1,23 +1,25 @@
-import { legacy_createStore as createStore, combineReducers, applyMiddleware } from "redux";
-import { Dishes } from "./dishes";
+import { Tuple, configureStore, combineReducers } from '@reduxjs/toolkit';
+import { thunk } from "redux-thunk";
 import { Comments } from "./comments";
-import { Promotions } from "./promotions";
-import { Leaders } from "./leaders";
-
-// import thunk from "redux-thunk";
+import { Dishes } from "./dishes";
 import { Feedback } from "./feedback";
+import { Leaders } from "./leaders";
+import { Promotions } from "./promotions";
 
 export const ConfigureStore = () => {
-  const store = createStore(
+  const storeReducer = 
     combineReducers({
       dishes: Dishes,
       comments: Comments,
       promotions: Promotions,
       leaders: Leaders,
       feedBack: Feedback,
-    }),
-    // applyMiddleware(thunk)
-  );
+    });
+
+  const store = configureStore({
+    reducer: storeReducer,
+    middleware: () => new Tuple(thunk),
+  })
 
   return store;
 };
