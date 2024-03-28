@@ -20,13 +20,13 @@ import { Link } from "react-router-dom";
 import { Loading } from "./LoadingComponent";
 // import { FadeTransform, Fade, Stagger } from "react-animation-components";
 
-function RenderComments({ comments, postComment, dishId }) {
+function RenderComments({ comments, postComment, dishId }:any) {
   if (comments !== null) {
     return (
       <div className="col-md-7 col-12">
         <h4>Comments</h4>
         {/* <Stagger in> */}
-          {comments.map((comment) => {
+          {comments.map((comment:any) => {
             return (
               // <Fade in>
                 <Card body key={comment.id} className="my-2">
@@ -43,13 +43,13 @@ function RenderComments({ comments, postComment, dishId }) {
             );
           })}
         {/* </Stagger> */}
-        <CommentForm dishId={dishId} postComment={postComment} />
+        {/* <CommentForm dishId={dishId} postComment={postComment} /> */}
       </div>
     );
   } else if (comments === undefined) {
     return (
       <>
-        <CommentForm dishId={dishId} postComment={postComment} />
+        {/* <CommentForm dishId={dishId} postComment={postComment} /> */}
       </>
     );
   } else {
@@ -57,7 +57,7 @@ function RenderComments({ comments, postComment, dishId }) {
   }
 }
 
-function RenderDish({ dish }) {
+function RenderDish({ dish }:any) {
   if (dish != null)
     return (
       // <FadeTransform
@@ -82,7 +82,7 @@ function RenderDish({ dish }) {
       </div>
     );
 }
-export default class DishDetail extends Component {
+export default class DishDetail extends Component<{isLoading:boolean,errMess:string,dish:any, comments: any, postComment:any}> {
   render() {
     if (this.props.isLoading) {
       return(
@@ -141,8 +141,8 @@ export default class DishDetail extends Component {
   }
 }
 
-class CommentForm extends Component {
-  constructor(props) {
+class CommentForm extends Component<{postComment:any, dishId:string}, {isModalOpen:boolean, isNavOpen: boolean}> {
+  constructor(props:any) {
     super(props);
 
     this.state = {
@@ -152,7 +152,7 @@ class CommentForm extends Component {
     this.toggleModal = this.toggleModal.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  handleSubmit(values) {
+  handleSubmit(values:any) {
     this.props.postComment(
       this.props.dishId,
       values.rating,
@@ -167,9 +167,9 @@ class CommentForm extends Component {
     });
   }
   render() {
-    const required = (val) => val && val.length;
-    const maxLength = (len) => (val) => !val || val.length <= len;
-    const minLength = (len) => (val) => val && val.length >= len;
+    const required = (val:any) => val && val.length;
+    const maxLength = (len:any) => (val:any) => !val || val.length <= len;
+    const minLength = (len:any) => (val:any) => val && val.length >= len;
 
     return (
       <>

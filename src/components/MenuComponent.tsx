@@ -12,7 +12,7 @@ import { Loading } from "./LoadingComponent";
 
 
 class Menu extends Component {
-  constructor(props) {
+  constructor(props:any) {
     super(props);
 
     this.state = {
@@ -22,12 +22,12 @@ class Menu extends Component {
   componentDidMount(){
   }
 
-  onDishSelect(dish) {
+  onDishSelect(dish:any) {
     this.setState({ selectedDish: dish });
   }
 
   render() {
-    function RenderMenuItem ({dish, onClick}) {
+    function RenderMenuItem ({dish, onClick}:any) {
       return (
           <Card onClick={onClick}>
               <Link to={`/menu/${dish.id}`} >
@@ -39,34 +39,34 @@ class Menu extends Component {
           </Card>
       );
   }
-    const menu = this.props.dishes.dishes.map((dish) => {
-      if (this.props.dishes.isLoading) {
-        return(
-            <div className="container">
-                <div className="row">            
-                    <Loading />
-                </div>
-            </div>
-        );
-    }
-    else if (this.props.dishes.errMess) {
-        return(
-            <div className="container">
-                <div className="row"> 
-                    <div className="col-12">
-                        <h4>{this.props.dishes.errMess}</h4>
-                    </div>
-                </div>
-            </div>
-        );
-    }
-    else
-      return (
-        <div className="col-12 col-md-5 m-2" key={dish.id}>
-         <RenderMenuItem dish={dish}></RenderMenuItem>
-        </div>
-      );
-    });
+    // const menu = this.props.dishes.dishes.map((dish:any) => {
+    //   if (this.props.dishes.isLoading) {
+    //     return(
+    //         <div className="container">
+    //             <div className="row">            
+    //                 <Loading />
+    //             </div>
+    //         </div>
+    //     );
+    // }
+    // else if (this.props.dishes.errMess) {
+    //     return(
+    //         <div className="container">
+    //             <div className="row"> 
+    //                 <div className="col-12">
+    //                     <h4>{this.props.dishes.errMess}</h4>
+    //                 </div>
+    //             </div>
+    //         </div>
+    //     );
+    // }
+    // else
+    //   return (
+    //     <div className="col-12 col-md-5 m-2" key={dish.id}>
+    //      <RenderMenuItem dish={dish}></RenderMenuItem>
+    //     </div>
+    //   );
+    // });
 
     return (
       <div className="container">
@@ -81,7 +81,7 @@ class Menu extends Component {
           </div>                
       </div>
       <div className="row py-4">
-          {menu}
+          {/* {menu} */}
       </div>
   </div>
     );

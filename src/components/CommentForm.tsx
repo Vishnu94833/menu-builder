@@ -13,8 +13,8 @@ import {
 } from "reactstrap";
 // import { LocalForm, Control, Errors } from "react-redux-form";
 
-class CommentForm extends Component {
-  constructor(props) {
+class CommentForm extends Component<{}, {isModalOpen:boolean, isNavOpen: boolean}> {
+  constructor(props: {}) {
     super(props);
 
     this.state = {
@@ -24,7 +24,7 @@ class CommentForm extends Component {
     this.toggleModal = this.toggleModal.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
-  handleSubmit(values) {
+  handleSubmit(values:any) {
     console.log("Current State is: " + JSON.stringify(values));
     alert("Current State is: " + JSON.stringify(values));
     // event.preventDefault();
@@ -36,9 +36,9 @@ class CommentForm extends Component {
     });
   }
   render() {
-    const required = (val) => val && val.length;
-    const maxLength = (len) => (val) => !val || val.length <= len;
-    const minLength = (len) => (val) => val && val.length >= len;
+    const required = (val:any) => val && val.length;
+    const maxLength = (len:any) => (val:any) => !val || val.length <= len;
+    const minLength = (len:any) => (val:any) => val && val.length >= len;
     return (
       <>
         <Button outline onClick={this.toggleModal}>

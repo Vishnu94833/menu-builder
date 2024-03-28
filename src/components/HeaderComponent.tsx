@@ -4,7 +4,7 @@ import { Nav, Navbar, NavbarBrand, NavbarToggler, Collapse, NavItem,Button, Moda
 import { NavLink } from 'react-router-dom';
 
 class Header extends Component {
-    constructor(props) {
+    constructor(props:any) {
         super(props);
     
         this.state = {
@@ -17,21 +17,21 @@ class Header extends Component {
       }
 
       toggleNav() {
-        this.setState({
-          isNavOpen: !this.state.isNavOpen
-        });
+        // this.setState({
+        //   isNavOpen: !(this.state).isNavOpen
+        // });
       }
 
       toggleModal() {
-        this.setState({
-          isModalOpen: !this.state.isModalOpen
-        });
+        // this.setState({
+        //   isModalOpen: !this.state.isModalOpen
+        // });
       }
 
-      handleLogin(event) {
-        this.toggleModal();
-        alert("Username: " + this.username.value + " Password: " + this.password.value
-            + " Remember: " + this.remember.checked);
+      handleLogin(event:any) {
+        // this.toggleModal();
+        // alert("Username: " + this.username.value + " Password: " + this.password.value
+        //     + " Remember: " + this.remember.checked);
         event.preventDefault();
 
     }
@@ -43,7 +43,7 @@ class Header extends Component {
                     <div className="container">
                         <NavbarToggler onClick={this.toggleNav} />
                         <NavbarBrand className="mr-auto"  href="#/home"><img src='assets/images/logo-1.png' height="50" width="100" alt='Lorem ipsum' /></NavbarBrand>
-                        <Collapse isOpen={this.state.isNavOpen} navbar>
+                        {/* <Collapse isOpen={this.state.isNavOpen} navbar> */}
                             <Nav navbar>
                             <NavItem>
                                 <NavLink className="nav-link"  to='/home'><span className="fa fa-home fa-lg"></span> Home</NavLink>
@@ -58,10 +58,10 @@ class Header extends Component {
                                 <NavLink className="nav-link" to='/contactus'><span className="fa fa-address-card fa-lg"></span> Contact Us</NavLink>
                             </NavItem>
                             </Nav>
-                        </Collapse>
+                        {/* </Collapse> */}
                     </div>
                 </Navbar>
-                <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
+                {/* <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
                     <ModalHeader toggle={this.toggleModal}>Login</ModalHeader>
                     <ModalBody>
                     <Form onSubmit={this.handleLogin}>
@@ -85,8 +85,7 @@ class Header extends Component {
                             <Button type="submit" value="submit" color="primary">Login</Button>
                         </Form>
                     </ModalBody>
-                </Modal>
-                {/* <Jumbotron> */}
+                </Modal> */}
                     <div className="container">
                         <div className="row row-header">
                             <div className="col-12 col-sm-6">
@@ -95,7 +94,6 @@ class Header extends Component {
                             </div>
                         </div>
                     </div>
-                {/* </Jumbotron> */}
             </div>
         );
     }

@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-function Footer(props) {
+function Footer(props: any) {
   const footerLinks = [
     { href: "/home", label: "Home" },
     { href: "/aboutus", label: "About Us" },
@@ -13,9 +13,14 @@ function Footer(props) {
       <footer className="page-footer font-small blue pt-4">
         <div className="container text-center text-md-left">
           <div className="row">
-          <div className="col-md-3 mb-md-0 mb-3">
+            <div className="col-md-3 mb-md-0 mb-3">
               <a href="#/home">
-              <img src="assets/images/logo-1.png" alt="Lorem ipsum" width="150" height="100"/>
+                <img
+                  src="assets/images/logo-1.png"
+                  alt="Lorem ipsum"
+                  width="150"
+                  height="100"
+                />
               </a>
             </div>
             <div className="col-md-3 mb-md-0 mb-3">
@@ -45,8 +50,8 @@ function Footer(props) {
     </div>
   );
 }
-function Links({ footerLinks }) {
-  return footerLinks.map((e) => {
+function Links({ footerLinks }: any) {
+  return footerLinks.map((e: any) => {
     return (
       <li key={e.label} className="footer-links">
         <Link to={e.href}>{e.label}</Link>

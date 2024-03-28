@@ -1,12 +1,11 @@
 import http from './axios-interceptor';
 
-export function getRecords(url){
+export function getRecords(url:string){
     return http.get(url).then(response=>{
         if (response.statusText === "OK") {
             return response.data.records
         } else {
-            var error = new Error('Error ' + response.status + ': ' + response.statusText);
-            error.response = response;
+            const error = new Error('Error ' + response.status + ': ' + response.statusText);
             throw error;
         }
     }

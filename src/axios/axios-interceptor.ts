@@ -22,8 +22,7 @@ const instance = axios.create({
     'Access-Control-Allow-Origin' : '*',
     'Authorization':"Bearer 00D2w000001NWR3!ARYAQPqUrxXnPUelWd8URFOskeXim7d8nog8ReOckjkpycfSlZ0BILoPin7A6tWsR99uRtTd7gLIlMlfJ_Z0O7Y0.plBXKGs",
     'Content-Type': 'application/json'
-  },
-  mode: 'no-cors'
+  }
 });
 
 // Add a request interceptor

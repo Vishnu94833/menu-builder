@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 // import { Stagger } from 'react-animation-components';
 
 
-function RenderLeader({ leaders }) {
+function RenderLeader({ leaders }:any) {
   return (
     <Media list>
       <div className="row">
@@ -28,7 +28,7 @@ function RenderLeader({ leaders }) {
   );
 }
 
-function About(props) {
+function About(props:any) {
 
   return (
     <div className="container">
@@ -102,7 +102,7 @@ function About(props) {
         </div>
         <div className="col-12">
         {/* <Stagger in> */}
-        {props.leaders.map((leader) => {
+        {props.leaders.map((leader:any) => {
     return (<RenderLeader leaders={leader} key={leader.name}></RenderLeader>);
         })
 }
